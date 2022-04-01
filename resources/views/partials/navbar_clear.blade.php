@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-md gradient-y sticky-top">
+<nav id="navbar" class="navbar navbar-expand-md py-3 sticky-top">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a id="navbar-brand" class="navbar-brand" href="{{ url('/') }}">
             <img src="img/logo.png" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -29,7 +29,8 @@
                     </li> --}}
                     @if (Route::has('login'))
                         <li class="nav-item">
-                            <button class="btn text-light bg-sindu" href="{{ route('login') }}">{{ __('Masuk') }}</button>
+                            <button id="login-btn" class="btn text-light bg-sindu"
+                                href="{{ route('login') }}">{{ __('Masuk') }}</button>
                         </li>
                     @endif
 
@@ -47,7 +48,7 @@
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                             document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
@@ -61,3 +62,38 @@
         </div>
     </div>
 </nav>
+
+<script>
+    // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        document.getElementById("navbar").style.background = "#4285F4";
+        document.getElementById("navbar").style.transition = "1s";
+        var login = document.getElementById("login-btn"); 
+        login.classList.remove("bg-sindu")
+        login.classList.remove("text-light")
+        login.classList.add("bg-light");
+        login.classList.add("text-sindu");
+        login.style.transition = "1s" ;
+        var logo = document.getElementById("navbar-brand");
+        logo.classList.add("shadow")
+        logo.style.transition = "1s";
+        document.getElementById("logo").style.fontSize = "35px";
+      } else {
+        document.getElementById("navbar").style.background = "linear-gradient(180deg, rgba(0,0,0,0.5046612394957983) 0%, rgba(0,0,0,0) 100%)";
+        document.getElementById("navbar").style.transition = "1s";
+        var login = document.getElementById("login-btn"); 
+        login.classList.remove("bg-light")
+        login.classList.remove("text-sindu")
+        login.classList.add("bg-sindu");
+        login.classList.add("text-light");
+        login.style.transition = "1s" ;
+        var logo = document.getElementById("navbar-brand");
+        logo.classList.remove("shadow")
+        logo.style.transition = "1s";
+        document.getElementById("logo").style.fontSize = "35px";
+      }
+    }
+    </script>

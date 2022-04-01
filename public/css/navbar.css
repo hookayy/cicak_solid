@@ -8,11 +8,15 @@
     width: 5em;;
 }
 
-.nav-item, .nav-item .bg-sindu                                                                                                           {
+.nav-item, .nav-item .bg-sindu , .nav-item .bg-light {
     font-family: "Poppins";
     font-weight: 600;
 }
 
 .bg-sindu {
     background-color: #4285F4;
+}
+
+.text-sindu {
+    color: #4285F4;
 }
